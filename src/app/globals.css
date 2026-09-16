@@ -1,0 +1,156 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+
+  body {
+    @apply bg-paper text-ink font-body antialiased;
+    background-image: theme("backgroundImage.grain");
+    background-repeat: repeat;
+  }
+
+  ::selection {
+    @apply bg-accent-rust/20 text-ink;
+  }
+}
+
+@layer components {
+  .container-journal {
+    @apply mx-auto w-full max-w-6xl px-5 sm:px-8;
+  }
+
+  .eyebrow {
+    @apply inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.16em] text-accent-rust;
+  }
+
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-sm border px-5 py-2.5 text-sm font-medium transition-all duration-300;
+  }
+
+  .btn-primary {
+    @apply btn border-ink bg-ink text-paper-soft hover:bg-ink/85;
+  }
+
+  .btn-secondary {
+    @apply btn border-line bg-transparent text-ink hover:border-ink;
+  }
+
+  .btn-ghost {
+    @apply btn border-transparent text-ink-soft hover:text-ink;
+  }
+
+  .card-lift {
+    @apply transition-all duration-500 ease-out hover:-translate-y-1 hover:shadow-lift;
+  }
+
+  .field-label {
+    @apply mb-1.5 block text-xs font-semibold uppercase tracking-wide text-ink-soft;
+  }
+
+  .field-input {
+    @apply w-full rounded-sm border border-line bg-paper-soft px-3.5 py-2.5 text-sm text-ink placeholder:text-ink-faint focus:border-ink focus:outline-none focus:ring-1 focus:ring-ink transition-colors;
+  }
+}
+
+/* ---------- Editorial article typography ---------- */
+.journal-prose {
+  @apply font-body text-[1.0625rem] leading-[1.85] text-ink-soft;
+}
+
+.journal-prose h1,
+.journal-prose h2,
+.journal-prose h3 {
+  @apply font-display text-ink;
+  scroll-margin-top: 6rem;
+}
+
+.journal-prose h1 {
+  @apply mt-12 mb-4 text-3xl;
+}
+
+.journal-prose h2 {
+  @apply mt-12 mb-4 text-2xl;
+}
+
+.journal-prose h3 {
+  @apply mt-8 mb-3 text-xl;
+}
+
+.journal-prose p {
+  @apply my-5;
+}
+
+.journal-prose > p:first-of-type:first-letter {
+  @apply float-left mr-3 mt-1 font-display text-6xl leading-[0.85] text-accent-rust;
+}
+
+.journal-prose a {
+  @apply text-accent-rust underline decoration-accent-rust/40 underline-offset-4 transition-colors hover:decoration-accent-rust;
+}
+
+.journal-prose strong {
+  @apply text-ink font-semibold;
+}
+
+.journal-prose blockquote {
+  @apply my-8 border-l-2 border-accent-rust/50 pl-5 font-display text-xl italic text-ink;
+}
+
+.journal-prose ul,
+.journal-prose ol {
+  @apply my-5 ml-6 space-y-2;
+}
+
+.journal-prose ul {
+  @apply list-disc;
+}
+
+.journal-prose ol {
+  @apply list-decimal;
+}
+
+.journal-prose img {
+  @apply my-8 w-full rounded-sm border border-line shadow-paper;
+}
+
+.journal-prose hr {
+  @apply my-12 border-t border-line;
+}
+
+.journal-prose pre {
+  @apply my-6 overflow-x-auto rounded-sm border border-line bg-ink px-5 py-4 text-sm text-paper-soft;
+}
+
+.journal-prose code {
+  @apply rounded-sm bg-paper-deep px-1.5 py-0.5 font-mono text-[0.9em] text-ink;
+}
+
+.journal-prose pre code {
+  @apply bg-transparent p-0 text-paper-soft;
+}
+
+.journal-prose figure {
+  @apply my-8;
+}
+
+.journal-prose figcaption {
+  @apply mt-2 text-center font-body text-sm text-ink-faint;
+}
